@@ -573,6 +573,15 @@ def page_home():
     
     render_header("BStartupLab", "Tu asistente inteligente multi-agente para Banco Sabadell")
     
+    # Video de presentación
+    video_path = Path("./presentacion.mp4")
+    if video_path.exists():
+        st.markdown('<br>', unsafe_allow_html=True)
+        st.markdown('<div style="text-align: center;">', unsafe_allow_html=True)
+        st.video(str(video_path))
+        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown('<br>', unsafe_allow_html=True)
+    
     st.markdown('<span class="section-badge">💡 NUESTRA MISIÓN</span>', unsafe_allow_html=True)
     
     st.markdown("""
@@ -697,195 +706,6 @@ def page_home():
     """, unsafe_allow_html=True)
     
     st.markdown('</div>', unsafe_allow_html=True)
-
-
-def page_how_it_works():
-    """Página de Funcionamiento"""
-    st.markdown('<div class="main-container fade-in">', unsafe_allow_html=True)
-    render_header("¿Cómo Funciona?")
-    
-    st.markdown('<span class="section-badge">🤖 ARQUITECTURA MULTI-AGENTE</span>', unsafe_allow_html=True)
-    
-    st.markdown("""
-    <div class="feature-card">
-        <div class="feature-title">
-            <span class="feature-icon">🧠</span>
-            <span>Sistema de 3 Agentes Especializados</span>
-        </div>
-        <div class="feature-text">
-            <p>BStartupLab utiliza una arquitectura avanzada donde <strong>múltiples agentes trabajan en colaboración</strong> para ofrecerte las respuestas más precisas y relevantes:</p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Agente 1: Rephrasing
-    st.markdown("""
-    <div class="process-step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-            <div class="step-title">🔄 Agente de Rephrasing</div>
-            <div class="step-description">
-                <strong>Optimiza tu consulta para búsquedas más efectivas</strong><br><br>
-                Este agente analiza tu pregunta y la reformula utilizando terminología legal y bancaria española. 
-                Extrae términos clave, añade sinónimos relevantes y contexto del historial de conversación 
-                para maximizar la precisión en la búsqueda de documentos.
-                <br><br>
-                <em>Ejemplo:</em> "¿Cómo abro una empresa?" → "Constitución sociedad limitada SL requisitos documentación registro mercantil trámites creación empresa España"
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Agente 2: RAG + Búsqueda
-    st.markdown("""
-    <div class="process-step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-            <div class="step-title">📚 Sistema RAG (Retrieval Augmented Generation)</div>
-            <div class="step-description">
-                <strong>Búsqueda semántica en base de conocimientos</strong><br><br>
-                Utilizando embeddings de OpenAI (text-embedding-3-small), el sistema busca en la base de datos 
-                vectorial persistente (ChromaDB) los 15 documentos más relevantes. La búsqueda es semántica, 
-                no por palabras clave, lo que permite encontrar información relacionada incluso si no usa exactamente tus términos.
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Agente 3: Reranking
-    st.markdown("""
-    <div class="process-step">
-        <div class="step-number">3</div>
-        <div class="step-content">
-            <div class="step-title">⚖️ Agente de Reranking</div>
-            <div class="step-description">
-                <strong>Selecciona los documentos más relevantes</strong><br><br>
-                De los 15 documentos recuperados, este agente usa ALIA para evaluar la relevancia de cada uno 
-                específicamente para tu pregunta. Asigna una puntuación de 0-10 a cada documento y selecciona 
-                los 8 mejores, eliminando información irrelevante y reduciendo "ruido" en la respuesta.
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Agente 4: ALIA Principal
-    st.markdown("""
-    <div class="process-step">
-        <div class="step-number">4</div>
-        <div class="step-content">
-            <div class="step-title">🚀 Agente Principal (ALIA-40b)</div>
-            <div class="step-description">
-                <strong>Genera la respuesta final personalizada</strong><br><br>
-                Con el contexto de los documentos rerankeados y tu historial de conversación, ALIA genera 
-                una respuesta en streaming en el idioma seleccionado (español, catalán, euskera, gallego o valenciano). 
-                Combina información de múltiples fuentes, mantiene coherencia con el contexto previo y 
-                proporciona respuestas concisas y accionables.
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown('<br><span class="section-badge">🧩 TECNOLOGÍAS CORE</span>', unsafe_allow_html=True)
-    
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.markdown("""
-        <div class="tech-card">
-            <div class="tech-icon">🤖</div>
-            <div class="tech-name">ALIA-40b</div>
-            <div class="tech-description">
-                LLM del Barcelona Supercomputing Center, optimizado para español y lenguas cooficiales
-            </div>
-        </div>
-
-        <div class="tech-card">
-            <div class="tech-icon">💾</div>
-            <div class="tech-name">ChromaDB</div>
-            <div class="tech-description">
-                Base de datos vectorial persistente para almacenamiento y búsqueda eficiente
-            </div>
-        </div>
-
-        <div class="tech-card">
-            <div class="tech-icon">⚡</div>
-            <div class="tech-name">Streamlit</div>
-            <div class="tech-description">
-                Interface web interactiva con streaming en tiempo real
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col2:
-        st.markdown("""
-        <div class="tech-card">
-            <div class="tech-icon">🔍</div>
-            <div class="tech-name">OpenAI Embeddings</div>
-            <div class="tech-description">
-                text-embedding-3-small para vectorización semántica de documentos
-            </div>
-        </div>
-
-        <div class="tech-card">
-            <div class="tech-icon">🔗</div>
-            <div class="tech-name">LangChain</div>
-            <div class="tech-description">
-                Framework para orquestación de agentes y procesamiento de documentos
-            </div>
-        </div>
-
-        <div class="tech-card">
-            <div class="tech-icon">🇪🇸</div>
-            <div class="tech-name">Multilingüe</div>
-            <div class="tech-description">
-                Soporte nativo para ES, CA, EU, GL, VA
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    
-    st.markdown('<br><span class="section-badge">🛡️ SEGURIDAD & PRIVACIDAD</span>', unsafe_allow_html=True)
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown("""
-        <div class="feature-card">
-            <div class="feature-title">
-                <span class="feature-icon">🔐</span>
-                <span>Datos Encriptados</span>
-            </div>
-            <div class="feature-text">
-                <ul style='margin-left: 1.5rem; font-size: 0.9rem;'>
-                    <li>Embeddings almacenados localmente</li>
-                    <li>Sin envío de datos sensibles a terceros</li>
-                    <li>Sesiones aisladas por usuario</li>
-                    <li>Cumplimiento GDPR</li>
-                </ul>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("""
-        <div class="feature-card">
-            <div class="feature-title">
-                <span class="feature-icon">🔒</span>
-                <span>API Segura</span>
-            </div>
-            <div class="feature-text">
-                <ul style='margin-left: 1.5rem; font-size: 0.9rem;'>
-                    <li>Conexiones HTTPS</li>
-                    <li>API Keys encriptadas</li>
-                    <li>Rate limiting implementado</li>
-                    <li>Auditoría de consultas</li>
-                </ul>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    st.markdown('</div>', unsafe_allow_html=True)
-
 
 def page_demo():
     """Página de Demo con chat integrado - VERSIÓN COMPLETA"""
