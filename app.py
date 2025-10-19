@@ -1084,13 +1084,13 @@ def render_footer():
     st.markdown(f"""
     <div style='text-align: center; padding: 3rem 1rem 1rem; color: {'rgba(255,255,255,0.7)' if st.session_state.dark_mode else 'rgba(15,23,42,0.6)'}; margin-top: 2rem;'>
         <p style='font-size: 0.9rem;'>
-            <strong>BStartupLab</strong> - Sistema Multi-Agente Inteligente
+            <strong>BStartupLab</strong> - Sistema Multi-Agente Inteligente - Todo el código está disponible en <a href='https://github.com/AhmedBegggaUA/BStartupLab' style="color: black;">GitHub</a>
         </p>
         <p style='font-size: 0.85rem; margin-top: 0.5rem;'>
             🏦 Banco Sabadell | 🎓 Innovation Banking Hack Fest 2025 | 🤖 Powered by ALIA-40b (BSC)
         </p>
         <p style='font-size: 0.8rem; margin-top: 1rem; opacity: 0.6;'>
-            © 2025 BStartupLab. #IBHF25 | 
+            ©️ 2025 BStartupLab. #IBHF25 | 
             <a href='#' style='color: inherit; text-decoration: none;'>Privacidad</a> | 
             <a href='#' style='color: inherit; text-decoration: none;'>Términos</a>
         </p>
