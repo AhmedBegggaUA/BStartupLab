@@ -1,0 +1,39 @@
+# ============================================
+# BStartupLab - Requirements
+# Innovation Banking Hack Fest 2025
+# ============================================
+
+# Core Framework
+streamlit>=1.32.0
+
+# LangChain Ecosystem
+langchain>=0.1.0
+langchain-community>=0.0.20
+langchain-openai>=0.0.5
+
+# Vector Database
+chromadb>=0.4.24
+
+# OpenAI
+openai>=1.12.0
+
+# Environment Management
+python-dotenv>=1.0.0
+
+# HTTP Requests
+requests>=2.31.0
+
+# Document Processing
+pypdf>=4.0.0
+PyMuPDF>=1.23.0
+docx2txt>=0.8
+
+# Image Processing
+Pillow>=10.0.0
+
+# Database
+pysqlite3-binary>=0.5.0
+
+# Utilities
+typing-extensions>=4.9.0
+pydantic>=2.0.0
